@@ -1,10 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Contact } from "@/components/NetworkMap";
 import "leaflet/dist/leaflet.css";
-import type { Map as LeafletMap } from "leaflet";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -28,7 +27,6 @@ const defaultZoom = 2;
 
 export default function MapView({ contacts }: { contacts: Contact[] }) {
   const [isMounted, setIsMounted] = useState(false);
-  const mapRef = useRef<LeafletMap | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -57,14 +55,6 @@ export default function MapView({ contacts }: { contacts: Contact[] }) {
     });
   }, []);
 
-  useEffect(() => {
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-    };
-  }, []);
 
   if (!isMounted) {
     return <div className="map-wrap" />;
@@ -76,9 +66,6 @@ export default function MapView({ contacts }: { contacts: Contact[] }) {
         center={defaultCenter}
         zoom={defaultZoom}
         scrollWheelZoom
-        whenCreated={(map) => {
-          mapRef.current = map;
-        }}
         className="map"
       >
         <TileLayer
