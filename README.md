@@ -10,6 +10,17 @@ Install dependencies:
 npm install
 ```
 
+Create a Supabase project and copy your project URL + anon/publishable key.
+
+Create a `.env.local` file (you can start from `.env.local.example`):
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY=your_supabase_anon_key
+```
+
+In Supabase, open the SQL editor and run the schema from `supabase/schema.sql`.
+
 Run the dev server:
 
 ```bash
@@ -17,3 +28,12 @@ npm run dev
 ```
 
 Then open http://localhost:3000
+
+## Deployment
+
+Deploy to Vercel and add the same environment variables in the project settings:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY`
+
+Supabase Auth handles sign-in, and Row Level Security keeps each user’s contacts private.
