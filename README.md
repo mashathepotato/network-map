@@ -37,3 +37,5 @@ Deploy to Vercel and add the same environment variables in the project settings:
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY`
 
 Supabase Auth handles sign-in, and Row Level Security keeps each user’s contacts private.
+
+This is a project I coded fully in English with Codex just for fun. I've been meaning to make a visual network database for myself for a while but only got round to it now. The entire thing from setup to deployment took about 4 hours. The last 10% took 90% of the time, as always) Feel free to use/adapt as needed!
